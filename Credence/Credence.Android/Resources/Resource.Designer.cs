@@ -26,6 +26,7 @@ namespace Credence.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Credence.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation

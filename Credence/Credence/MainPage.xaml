@@ -4,8 +4,10 @@
              xmlns:local="clr-namespace:Credence"
              x:Class="Credence.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <StackLayout x:Name="stackLayout">
+        <Label Text="xaml is dumb"
+               FontSize="Large"
+               HorizontalTextAlignment="Start" />
+    </StackLayout>
 
 </ContentPage>

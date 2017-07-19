@@ -3,7 +3,7 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>0f678d7d-c516-477d-9056-0f293bf7aa19</SharedGUID>
+    <SharedGUID>d3c095d1-8039-4c97-9eba-4c88c9ededfa</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>Credence</Import_RootNamespace>
@@ -12,13 +12,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)AnswerPage.xaml.cs">
-      <DependentUpon>AnswerPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)JSONTrivia.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HelpPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResultsPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TitlePage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trivia.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AnswerPage.xaml.cs">
+      <DependentUpon>AnswerPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

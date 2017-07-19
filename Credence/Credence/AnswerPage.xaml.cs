@@ -12,19 +12,24 @@ namespace Credence
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AnswerPage : ContentPage
 	{
-		public AnswerPage()
-		{
-			InitializeComponent();
+        public AnswerPage()
+        {
+            InitializeComponent();
 
-            Title = "Answer Page";
-            string FeedbackText;
-            if (App.Correct)
+            string text = "";
+            Color textColor;
+            double opacity = (App.DeltaScore == 0) ? 0.5 : 0.6 + Math.Log(Math.Abs(App.DeltaScore)) / 6.5;
+            if (App.AnsweredCorrectly)
             {
-                FeedbackText = "Correct! blah blah blah is richer! You gain x points!";
+                text += "+" + App.DeltaScore;
+                textColor = new Color(0, 1, 0, opacity);
             }
             else
             {
-                FeedbackText = "Incorrect! You suck at life! You lose x points!";
+                if (App.DeltaScore == 0)
+                    text += "-";
+                text += App.DeltaScore;
+                textColor = new Color(1, 0, 0, opacity);
             }
 
             Button next = new Button
@@ -44,13 +49,29 @@ namespace Credence
                 {
                     new Label
                     {
-                        FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-                        HorizontalTextAlignment = TextAlignment.Start,
-                        Text = FeedbackText + "\n" + "Score: " + App.Score
-                    },
-                    next
+                        FontSize = 128,
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        TextColor = textColor,
+                        Text = text
+                    }
                 }
             };
         }
-	}
+
+        async protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            Content.Opacity = 1;
+            await Task.WhenAny<bool>
+            (
+                Content.ScaleTo(3, 400, Easing.CubicOut),
+                Content.FadeTo(0, 400, Easing.CubicOut)
+                );
+            if (App.RoundNum <= 24) //end the game after 25 questions or so
+                await Navigation.PushModalAsync(new MainPage());
+            else
+                await Navigation.PushModalAsync(new ResultsPage());
+        }
+    }
 }

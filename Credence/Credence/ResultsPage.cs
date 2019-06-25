@@ -44,8 +44,8 @@ namespace Credence
                         FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                         Text = "Final score: " + totalScore + "\n" +
                         "Average score: " + avgScore + "\n\n" +
-                        "And the calibration part. Because it's 1am and I'm too lazy to learn how to make tables or graphs, here's some sh*tily formatted text:\n" +
-                        "the button you pressed | % you got it right | diff | count\n" +
+                        "Calibration results:\n" +
+                        "subjective probability given | % correct | diff | count\n" +
                         "50% | " + percentages[0] + " | " + (percentages[0] - 50) + " | " + App.TotalAnswers[0] + "\n" +
                         "60% | " + percentages[1] + " | " + (percentages[1] - 60) + " | " + App.TotalAnswers[1] + "\n" +
                         "70% | " + percentages[2] + " | " + (percentages[2] - 70) + " | " + App.TotalAnswers[2] + "\n" +
